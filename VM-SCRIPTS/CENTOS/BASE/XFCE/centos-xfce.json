@@ -1,0 +1,130 @@
+{
+	"variables": {
+		"vm_name": "centos-xfce-basevm"
+	},
+	"provisioners": [
+		{
+		  "type": "file",
+		  "source": "config",
+		  "destination": "/tmp/config"
+		},
+		{
+			"type": "shell",
+			"script": "scripts/base.sh",
+			"override": {
+				"virtualbox-iso": {
+					"execute_command": "echo 'developer'|sudo -S bash '{{.Path}}'"
+				}
+			}
+		},
+		{
+		  "type": "file",
+		  "source": "scripts",
+		  "destination": "/tmp/scripts"
+		},
+		{
+		  "type": "file",
+		  "source": "../../SCRIPTS/CLEANUP",
+		  "destination": "/tmp/scripts"
+		},
+		{
+		  "type": "file",
+		  "source": "../../SCRIPTS/VBOX",
+		  "destination": "/tmp/scripts"
+		},
+		{
+			"type": "shell",
+			"inline": [
+				"dos2unix /tmp/scripts/executeAll.sh",
+				"chmod +x /tmp/scripts/executeAll.sh",
+				"/tmp/scripts/executeAll.sh"
+			],
+			"override": {
+				"virtualbox-iso": {
+					"execute_command": "echo 'developer'|sudo -S bash '{{.Path}}'"
+				}
+			}
+		}
+    ],
+    "builders": [
+		{
+		  "type": "virtualbox-iso",
+		  "boot_command": [
+			  "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+		  ],
+		  "headless": true,
+		  "boot_wait": "10s",
+		  "disk_size": 40960,
+		  "guest_os_type": "RedHat_64",
+		  "http_directory": "http",
+		  "iso_checksum": "38d5d51d9d100fd73df031ffd6bd8b1297ce24660dc8c13a3b8b4534a4bd291c",
+		  "iso_checksum_type": "sha256",
+		  "iso_url": "http://mirror.netcologne.de/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-Minimal-1810.iso",
+		  "guest_additions_mode": "upload",
+		  "guest_additions_path": "/tmp/VBoxGuestAdditions.iso",
+		  "ssh_username": "developer",
+		  "ssh_password": "developer",
+		  "ssh_port": 22,
+		  "ssh_wait_timeout": "10000s",
+		  "shutdown_command": "echo '/sbin/halt -h -p'>shutdown.sh; echo 'developer'|sudo -S bash 'shutdown.sh'",
+		  "output_directory": "../../../../GENERATED/{{user `vm_name`}}",
+		  "vboxmanage": [
+				[
+				  "modifyvm",
+				  "{{.Name}}",
+				  "--memory",
+				  "8192"
+				],
+				[
+				  "modifyvm",
+				  "{{.Name}}",
+				  "--cpus",
+				  "2"
+				],
+				[
+				  "modifyvm",
+				  "{{.Name}}",
+				  "--accelerate3d",
+				  "on"
+				],
+				[
+				  "modifyvm",
+				  "{{.Name}}",
+				  "--accelerate2dvideo",
+				  "on"
+				],
+				[
+				  "modifyvm",
+				  "{{.Name}}",
+				  "--vram",
+				  "128"
+				],
+				[
+				  "modifyvm",
+				  "{{.Name}}",
+				  "--draganddrop",
+				  "bidirectional"
+				],
+				[
+				  "modifyvm",
+				  "{{.Name}}",
+				  "--clipboard",
+				  "bidirectional"
+				],
+				[
+				  "modifyvm",
+				  "{{.Name}}",
+				  "--cableconnected1",
+				  "on"
+				],
+				[
+				  "modifyvm",
+				  "{{.Name}}",
+				  "--monitorcount",
+				  "2"
+				]
+		  ],
+		  "vm_name" : "{{user `vm_name`}}"
+		}
+	]
+}
