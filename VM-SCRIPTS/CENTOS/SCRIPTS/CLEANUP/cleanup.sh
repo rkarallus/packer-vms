@@ -7,3 +7,5 @@ yum -y remove orage*
 yum -y clean all
 
 rm -rf /tmp/config
+rm -rf /tmp/scripts
+rm -rf /tmp/update-scripts

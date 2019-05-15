@@ -25,7 +25,7 @@
 		{
 		  "type": "file",
 		  "source": "../../SCRIPTS/CLEANUP",
-		  "destination": "/tmp/scripts"
+		  "destination": "/tmp"
 		},
 		{
 		  "type": "file",

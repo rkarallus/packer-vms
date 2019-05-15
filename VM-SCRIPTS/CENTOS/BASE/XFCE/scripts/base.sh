@@ -7,7 +7,7 @@ yum -y install epel-release
 yum -y groupinstall "X Window system" -y
 yum -y groupinstall xfce
 
-yum -y install dos2unix net-tools vim
+yum -y install file-roller gedit p7zip terminator dos2unix net-tools vim multitail
 
 # Tweak sshd to prevent DNS resolution (speed up logins)
 echo "UseDNS no" >> /etc/ssh/sshd_config

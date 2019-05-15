@@ -1,6 +1,11 @@
 #!/bin/bash
 
-yum -y install git bash-completion gitk meld kdiff3 gitg curl
+yum -y remove git
+
+yum -y install https://centos7.iuscommunity.org/ius-release.rpm
+yum -y install git2u-all
+
+yum -y install bash-completion gitk meld kdiff3 gitg curl
 
 yes | cp /tmp/update-scripts/GIT/config/_.gitconfig /home/developer/.gitconfig
 dos2unix /home/developer/.gitconfig

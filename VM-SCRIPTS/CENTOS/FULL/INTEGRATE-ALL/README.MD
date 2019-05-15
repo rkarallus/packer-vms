@@ -1,7 +1,5 @@
 # Overview
-This setup script generates a base VM with the latest CentOS7 and XFCE as window manager. 
-
-They keyboard default is en-US but can be changed using the CTRL + SHIFT keys (to de-DE)
+This setup script generates a base VM with the latest CentOS7 and XFCE as window manager plus all available tools from the ../../SCRIPTS subfolders. This VM is used for integration testing of the scripts.
 
 # Preconditions
 Packer is required in your path. The recommended version is packer 1.4.1 or higher.
@@ -15,7 +13,7 @@ An Internet connection is required as all software for the VM will be directly d
 # How to generate
 Execute the following command
 
-`packer build --force centos-xfce.json`
+`packer build --force integrate-all.json`
 
 # Resulting VM
-The resulting VM will be stored in "../../../../GENERATED/centos-xfce-basevm"
+The resulting VM will be stored in "../../../../GENERATED/centos-xfce-all"

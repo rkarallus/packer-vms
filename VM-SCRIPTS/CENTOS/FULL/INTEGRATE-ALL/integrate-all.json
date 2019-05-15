@@ -1,0 +1,94 @@
+{
+	"variables": {
+		"vm_name": "centos-xfce-all"
+	},
+	"provisioners": [
+		{
+		  "type": "file",
+		  "source": "scripts",
+		  "destination": "/tmp/update-scripts"
+		},{
+		  "type": "file",
+		  "source": "../../SCRIPTS/JDK",
+		  "destination": "/tmp/update-scripts"
+		},{
+		  "type": "file",
+		  "source": "../../SCRIPTS/ATOM",
+		  "destination": "/tmp/update-scripts"
+		},{
+		  "type": "file",
+		  "source": "../../SCRIPTS/AWS-CLI",
+		  "destination": "/tmp/update-scripts"
+		},{
+		  "type": "file",
+		  "source": "../../SCRIPTS/DOCKER",
+		  "destination": "/tmp/update-scripts"
+		},{
+		  "type": "file",
+		  "source": "../../SCRIPTS/INTELLIJ",
+		  "destination": "/tmp/update-scripts"
+		},{
+		  "type": "file",
+		  "source": "../../SCRIPTS/POSTMAN",
+		  "destination": "/tmp/update-scripts"
+		},{
+		  "type": "file",
+		  "source": "../../SCRIPTS/NODE",
+		  "destination": "/tmp/update-scripts"
+		},{
+		  "type": "file",
+		  "source": "../../SCRIPTS/VSCODE",
+		  "destination": "/tmp/update-scripts"
+		},
+		{
+		  "type": "file",
+		  "source": "../../SCRIPTS/FIREFOX",
+		  "destination": "/tmp/update-scripts"
+		},{
+		  "type": "file",
+		  "source": "../../SCRIPTS/CHROME",
+		  "destination": "/tmp/update-scripts"
+		},{
+		  "type": "file",
+		  "source": "../../SCRIPTS/GIT",
+		  "destination": "/tmp/update-scripts"
+		},{
+		  "type": "file",
+		  "source": "../../SCRIPTS/BASH-IT",
+		  "destination": "/tmp/update-scripts"
+		},{
+		  "type": "file",
+		  "source": "../../SCRIPTS/CLEANUP",
+		  "destination": "/tmp"
+		},
+		{
+			"type": "shell",
+			"inline": [
+				"dos2unix /tmp/update-scripts/executeAll.sh",
+				"chmod +x /tmp/update-scripts/executeAll.sh",
+				"/tmp/update-scripts/executeAll.sh"
+			],
+			"override": {
+				"virtualbox-ovf": {
+					"execute_command": "echo 'developer'|sudo -S bash '{{.Path}}'"
+				}
+			}
+		}
+    ],
+    "builders": [
+		{
+		  "type": "virtualbox-ovf",
+		  "format": "ovf",
+		  "source_path": "../../../../GENERATED/centos-xfce-basevm/centos-xfce-basevm.ovf",
+		  "ssh_username": "developer",
+		  "ssh_password": "developer",
+		  "shutdown_command": "echo 'packer' | sudo -S shutdown -P now",
+		  "headless": true,
+		  "boot_wait": "120s",
+		  "guest_additions_mode": "disable",
+		  "checksum_type": "none",
+		  "vm_name" : "{{user `vm_name`}}",
+		  "output_directory": "../../../../GENERATED/{{user `vm_name`}}"
+		}
+	]
+}
