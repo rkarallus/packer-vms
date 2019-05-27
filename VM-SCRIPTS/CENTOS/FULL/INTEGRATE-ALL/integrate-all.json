@@ -58,6 +58,10 @@
 		  "destination": "/tmp/update-scripts"
 		},{
 		  "type": "file",
+		  "source": "../../SCRIPTS/DBEAVER",
+		  "destination": "/tmp/update-scripts"
+		},{
+		  "type": "file",
 		  "source": "../../SCRIPTS/CLEANUP",
 		  "destination": "/tmp"
 		},
