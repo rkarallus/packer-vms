@@ -33,7 +33,6 @@ cp -R /tmp/config/xfce4 /home/developer/.config/
 chown developer:developer /home/developer/.config
 
 yum -y install curl cabextract xorg-x11-font-utils fontconfig
-rpm -i https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm
 
 rpm -e initial-setup initial-setup-gui
 systemctl isolate graphical.target
