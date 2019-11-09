@@ -2,7 +2,7 @@
 
 cd /usr/local
 yum -y install curl dos2unix
-sudo curl -L "https://download.jetbrains.com/product?code=IIC&latest&distribution=linux" -o idea.tar.gz
+sudo curl -s -L "https://download.jetbrains.com/product?code=IIC&latest&distribution=linux" -o idea.tar.gz
 
 tar xvf idea.tar.gz
 rm -f idea.tar.gz
