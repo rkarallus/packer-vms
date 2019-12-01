@@ -37,3 +37,6 @@ rpm -i https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-font
 rpm -e initial-setup initial-setup-gui
 systemctl isolate graphical.target
 systemctl set-default graphical.target
+
+echo "" >> /etc/sysctl.conf 
+echo "fs.inotify.max_user_watches = 524288" >> /etc/sysctl.conf 
