@@ -11,6 +11,7 @@ sudo /tmp/update-scripts/POSTMAN/postman.sh
 sudo /tmp/update-scripts/VSCODE/vscode.sh
 sudo /tmp/update-scripts/FIREFOX/firefox.sh
 sudo /tmp/update-scripts/CHROME/chrome.sh
+sudo /tmp/update-scripts/K8S/k8s.sh
 sudo /tmp/update-scripts/GIT/git.sh
 sudo /tmp/update-scripts/BASH-IT/bash-it.sh
 sudo /tmp/update-scripts/DBEAVER/dbeaver.sh

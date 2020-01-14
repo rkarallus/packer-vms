@@ -116,7 +116,7 @@
 				[
 				  "modifyvm",
 				  "{{.Name}}",
-				  "--clipboard",
+				  "--clipboard-mode",
 				  "bidirectional"
 				],
 				[
