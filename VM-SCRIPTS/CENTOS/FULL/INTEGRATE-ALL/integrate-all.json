@@ -62,6 +62,14 @@
 		  "destination": "/tmp/update-scripts"
 		},{
 		  "type": "file",
+		  "source": "../../SCRIPTS/MAVEN",
+		  "destination": "/tmp/update-scripts"
+		},{
+		  "type": "file",
+		  "source": "../../SCRIPTS/GRADLE",
+		  "destination": "/tmp/update-scripts"
+		},{
+		  "type": "file",
 		  "source": "../../SCRIPTS/CLEANUP",
 		  "destination": "/tmp"
 		},
