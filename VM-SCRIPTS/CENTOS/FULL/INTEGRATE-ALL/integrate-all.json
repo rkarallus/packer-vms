@@ -59,6 +59,14 @@
 		},{
 		  "type": "file",
 		  "source": "../../SCRIPTS/K8S",
+			"destination": "/tmp/update-scripts"
+		},{
+			"type": "file",
+		  "source": "../../SCRIPTS/MAVEN",
+		  "destination": "/tmp/update-scripts"
+		},{
+		  "type": "file",
+		  "source": "../../SCRIPTS/GRADLE",
 		  "destination": "/tmp/update-scripts"
 		},{
 		  "type": "file",

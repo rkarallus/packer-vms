@@ -20,7 +20,7 @@ curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/miniku
 mkdir -p /usr/local/bin/
 install minikube /usr/local/bin/
 
-echo "CHANGE_MINIKUBE_NONE_USER=true" >> /root/.bashrc
+echo "CHANGE_MINIKUBE_NONE_USER=true" >> /home/developer/.bashrc
 /usr/local/bin/minikube start --vm-driver=none
 
 cd /tmp
@@ -28,3 +28,5 @@ cd /tmp
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
 chmod 700 get_helm.sh
 ./get_helm.sh
+
+echo "" >> /home/developer/.bashrc && echo "export PATH=$PATH:/usr/local/bin" >> /home/developer/.bashrc
