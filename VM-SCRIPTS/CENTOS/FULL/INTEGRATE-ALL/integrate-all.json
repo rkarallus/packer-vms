@@ -1,6 +1,6 @@
 {
 	"variables": {
-		"vm_name": "centos-xfce-all"
+		"vm_name": "centos-gnome-all"
 	},
 	"provisioners": [
 		{
@@ -9,11 +9,7 @@
 		  "destination": "/tmp/update-scripts"
 		},{
 		  "type": "file",
-		  "source": "../../SCRIPTS/JDK",
-		  "destination": "/tmp/update-scripts"
-		},{
-		  "type": "file",
-		  "source": "../../SCRIPTS/ATOM",
+		  "source": "../../SCRIPTS/ADOPTOPENJDK",
 		  "destination": "/tmp/update-scripts"
 		},{
 		  "type": "file",
@@ -91,7 +87,7 @@
 		{
 		  "type": "virtualbox-ovf",
 		  "format": "ovf",
-		  "source_path": "../../../../GENERATED/centos-xfce-basevm/centos-xfce-basevm.ovf",
+		  "source_path": "../../../../GENERATED/centos-gnome-basevm/centos-gnome-basevm.ovf",
 		  "ssh_username": "developer",
 		  "ssh_password": "developer",
 		  "shutdown_command": "echo 'packer' | sudo -S shutdown -P now",

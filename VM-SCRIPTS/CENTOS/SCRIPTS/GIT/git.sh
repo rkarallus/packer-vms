@@ -11,7 +11,7 @@ yes | cp /tmp/update-scripts/GIT/config/_.gitconfig /home/developer/.gitconfig
 dos2unix /home/developer/.gitconfig
 
 cd /home/developer
-curl -o /usr/bin/git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
+curl -s -o /usr/bin/git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
 
 if [ -f /usr/bin/git-prompt.sh ]; then
     echo "source /usr/bin/git-prompt.sh" >> /etc/bashrc

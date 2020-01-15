@@ -1,6 +1,6 @@
 {
 	"variables": {
-		"vm_name": "centos-xfce-basevm"
+		"vm_name": "centos-gnome-basevm"
 	},
 	"provisioners": [
 		{
@@ -75,7 +75,7 @@
 				  "modifyvm",
 				  "{{.Name}}",
 				  "--graphicscontroller",
-				  "vmsvga"
+				  "vboxsvga"
 				],
 				[
 				  "modifyvm",

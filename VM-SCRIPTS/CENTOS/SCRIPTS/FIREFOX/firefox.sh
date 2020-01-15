@@ -5,7 +5,7 @@ yum -y install wget tar
 yum -y remove firefox
 unlink /usr/bin/firefox
 cd /usr/local 
-wget --content-disposition "https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=linux64"
+wget -q --content-disposition "https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=linux64"
 tar xvjf firefox*.tar.bz2
 rm -f firefox*.tar.bz2
 ln -s /usr/local/firefox/firefox /usr/bin/firefox
