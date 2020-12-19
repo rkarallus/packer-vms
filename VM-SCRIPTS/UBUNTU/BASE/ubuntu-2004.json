@@ -1,0 +1,161 @@
+{
+  "variables": {
+	"vm_name": "ubuntu-basevm"
+  },
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "config/user",
+      "destination": "/home/ubuntu/.config/dconf/user"
+    },
+    {
+		"type": "shell",
+		"script": "scripts/ui.sh",
+		"execute_command": "echo 'ubuntu' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
+	},
+	{
+		"type": "shell",
+		"script": "scripts/virtualbox.sh",
+		"execute_command": "echo 'ubuntu' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
+	},
+	{
+		"type": "shell",
+		"script": "scripts/base-tools.sh",
+		"execute_command": "echo 'ubuntu' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
+	},
+	{
+		"type": "shell",
+		"script": "scripts/docker.sh",
+		"execute_command": "echo 'ubuntu' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
+	},
+	{
+		"type": "shell",
+		"script": "scripts/vscode.sh",
+		"execute_command": "echo 'ubuntu' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
+	},
+	{
+		"type": "shell",
+		"script": "scripts/nodejs.sh"
+	},
+	{
+		"type": "shell",
+		"script": "scripts/aws.sh",
+		"execute_command": "echo 'ubuntu' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
+	},
+	{
+		"type": "shell",
+		"script": "scripts/k8s.sh",
+		"execute_command": "echo 'ubuntu' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
+	},
+	{
+		"type": "shell",
+		"script": "scripts/chrome.sh",
+		"execute_command": "echo 'ubuntu' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
+	},
+	{
+		"type": "shell",
+		"script": "scripts/adoptopenjdk.sh",
+		"execute_command": "echo 'ubuntu' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
+	},
+	{
+		"type": "shell",
+		"script": "scripts/dbeaver.sh",
+		"execute_command": "echo 'ubuntu' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
+	},
+	{
+		"type": "shell",
+		"script": "scripts/intellij.sh",
+		"execute_command": "echo 'ubuntu' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
+	},
+	{
+		"type": "shell",
+		"script": "scripts/cleanup.sh",
+		"execute_command": "echo 'ubuntu' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
+	}
+  ],
+  "builders": [
+    {
+      "boot_command": [
+        "<enter><wait2><enter><wait><f6><esc><wait>",
+        " autoinstall<wait2> ds=nocloud-net;",
+        "<wait><enter>"
+      ],
+      "boot_wait": "3s",
+      "cpus": 4,
+      "memory": 8192,
+      "guest_os_type": "Ubuntu_64",
+      "headless": true,
+      "http_directory": "./http",
+      "iso_checksum": "sha256:443511f6bf12402c12503733059269a2e10dec602916c0a75263e5d990f6bb93",
+      "iso_url": "ubuntu-20.04.1-live-server-amd64.iso",
+	  "guest_additions_mode": "upload",
+	  "guest_additions_path": "/tmp/VBoxGuestAdditions.iso",
+      "name": "{{user `vm_name`}}",
+      "floppy_files": ["./http/user-data", "./http/meta-data"],
+      "floppy_label": "cidata",
+      "ssh_handshake_attempts": "100",
+      "ssh_username": "ubuntu",
+      "ssh_password": "ubuntu",
+	  "ssh_timeout": "30m",
+      "type": "virtualbox-iso",
+	  "output_directory": "../../../GENERATED/{{user `vm_name`}}",
+	  "vboxmanage": [
+			[
+			  "modifyvm",
+			  "{{.Name}}",
+			  "--graphicscontroller",
+			  "vmsvga"
+			],
+			[
+			  "modifyvm",
+			  "{{.Name}}",
+			  "--memory",
+			  "8192"
+			],
+			[
+			  "modifyvm",
+			  "{{.Name}}",
+			  "--cpus",
+			  "4"
+			],
+			[
+			  "modifyvm",
+			  "{{.Name}}",
+			  "--accelerate2dvideo",
+			  "on"
+			],
+			[
+			  "modifyvm",
+			  "{{.Name}}",
+			  "--vram",
+			  "128"
+			],
+			[
+			  "modifyvm",
+			  "{{.Name}}",
+			  "--draganddrop",
+			  "bidirectional"
+			],
+			[
+			  "modifyvm",
+			  "{{.Name}}",
+			  "--clipboard",
+			  "bidirectional"
+			],
+			[
+			  "modifyvm",
+			  "{{.Name}}",
+			  "--cableconnected1",
+			  "on"
+			],
+			[
+			  "modifyvm",
+			  "{{.Name}}",
+			  "--monitorcount",
+			  "2"
+			]
+	  ],
+	  "vm_name" : "{{user `vm_name`}}"
+    }
+  ]
+}
