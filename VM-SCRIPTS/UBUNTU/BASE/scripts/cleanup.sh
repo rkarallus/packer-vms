@@ -1,5 +1,7 @@
 #!/bin/bash -eux
 
+chown -R ubuntu:ubuntu /home/ubuntu
+
 # Apt cleanup.
 apt autoremove -y
 apt update

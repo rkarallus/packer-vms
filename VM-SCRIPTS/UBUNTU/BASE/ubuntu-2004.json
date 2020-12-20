@@ -4,23 +4,23 @@
   },
   "provisioners": [
     {
-      "type": "file",
-      "source": "config/user",
-      "destination": "/home/ubuntu/.config/dconf/user"
-    },
-    {
 		"type": "shell",
 		"script": "scripts/ui.sh",
 		"execute_command": "echo 'ubuntu' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
 	},
 	{
 		"type": "shell",
-		"script": "scripts/virtualbox.sh",
+		"script": "scripts/base-tools.sh",
 		"execute_command": "echo 'ubuntu' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
 	},
 	{
+      "type": "file",
+      "source": "config/user",
+      "destination": "/home/ubuntu/.config/dconf/user"
+    },
+	{
 		"type": "shell",
-		"script": "scripts/base-tools.sh",
+		"script": "scripts/virtualbox.sh",
 		"execute_command": "echo 'ubuntu' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
 	},
 	{
