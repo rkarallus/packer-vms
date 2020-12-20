@@ -14,11 +14,6 @@
 		"execute_command": "echo 'ubuntu' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
 	},
 	{
-      "type": "file",
-      "source": "config/user",
-      "destination": "/home/ubuntu/.config/dconf/user"
-    },
-	{
 		"type": "shell",
 		"script": "scripts/virtualbox.sh",
 		"execute_command": "echo 'ubuntu' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
