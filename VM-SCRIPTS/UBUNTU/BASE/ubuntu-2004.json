@@ -78,6 +78,7 @@
       "boot_wait": "3s",
       "cpus": 4,
       "memory": 8192,
+	  "disk_size": 81920,
       "guest_os_type": "Ubuntu_64",
       "headless": true,
       "http_directory": "./http",
