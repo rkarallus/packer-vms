@@ -30,6 +30,10 @@
 	},
 	{
 		"type": "shell",
+		"script": "scripts/bash-it.sh"
+	},
+	{
+		"type": "shell",
 		"script": "scripts/nodejs.sh"
 	},
 	{
@@ -60,6 +64,11 @@
 	{
 		"type": "shell",
 		"script": "scripts/intellij.sh",
+		"execute_command": "echo 'ubuntu' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
+	},
+	{
+		"type": "shell",
+		"script": "scripts/postman.sh",
 		"execute_command": "echo 'ubuntu' | {{.Vars}} sudo -S -E bash '{{.Path}}'"
 	},
 	{

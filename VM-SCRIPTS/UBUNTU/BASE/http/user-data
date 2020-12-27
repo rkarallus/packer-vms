@@ -1,10 +1,10 @@
 #cloud-config
 autoinstall:
   version: 1
-  locale: en_GB
+  locale: en_US
   keyboard:
     layout: en
-    variant: uk
+    variant: us
   network:
     network:
       version: 2
@@ -20,5 +20,6 @@ autoinstall:
   user-data:
     disable_root: false
   late-commands:
+    - timedatectl set-timezone CET
     - 'sed -i "s/dhcp4: true/&\n      dhcp-identifier: mac/" /target/etc/netplan/00-installer-config.yaml'
     - echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/ubuntu
